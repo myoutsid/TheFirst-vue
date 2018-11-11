@@ -1,21 +1,12 @@
-/*
-入口JS
- */
 import Vue from 'vue'
-import App from './App.vue'
-import './index.css'
+import VueResource from 'vue-resource'
+import App from './components/App.vue'
 
+// 声明使用插件
+Vue.use(VueResource) // 内部调用VueResource.install()给vm/组件对象添加属性$http
+
+// 创建vm对象
 new Vue({
   el: '#app',
-  components: {
-    App
-  },
-  template: '<App/>'
+  render: h => h(App)
 })
-
-/*
-一个vm管理了多个组件标签
-每个组件标签都是一个组件对象
-每个组件对象就是一个小/子vm
-组件中的模板能直接访问的是组件对象的属性
- */
